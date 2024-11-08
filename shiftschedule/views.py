@@ -28,6 +28,7 @@ def add_guard(request):
         form = GuardForm()
     return render(request, 'shiftschedule/add_guard.html', {'form': form})
 
+# update guard's unavailabilty in the day and night
 def update_guard(request, guard_id):
     guard = get_object_or_404(Guard, id=guard_id)
     if request.method == 'POST':
