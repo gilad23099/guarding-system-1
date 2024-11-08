@@ -1,0 +1,377 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flex centering specifically for the add_guard.html page */
+body.add-guard-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Title styling */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Guards List Page */
+body.guards-list-page h1 {
+    width: 100%;
+}
+
+body.guards-list-page table {
+    margin: 0 auto;
+    width: auto; /* Ensures table fits its content */
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+body.guards-list-page th,
+body.guards-list-page td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+th {
+    background-color: #6eb16e;
+    color: white;
+}
+
+/* Link and button styling */
+a,button,
+.styled-link,
+.custom-link {
+    display: inline-block;
+    background-color: #bdc1bd;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+    border:none;
+}
+
+a:hover,button:hover,
+.styled-link:hover,
+.custom-link:hover {
+    background-color: #939793;
+}
+
+a:active,
+.styled-link:active,
+.custom-link:active {
+    background-color: #003d7a;
+    transform: scale(0.95);
+}
+
+/* Specific styling for guards_list.html link */
+body.guards-list-page .link-container {
+    display: flex;
+    margin-bottom:1%;
+    justify-content: center;
+    gap: 20px; /* Adds space between the links */
+    margin-top: 20px;
+}
+
+body.guards-list-page .styled-link {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #6eb16e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
+    box-shadow: 0 4px 0 #397f39, /* Darker edge for the 3D effect */
+                0 6px 10px rgba(0, 0, 0, 0.2); /* Shadow for soft depth */
+}
+/* body.guards-list-page .guards-list-btn{
+    background-color: none;
+} */
+
+body.guards-list-page .styled-link:hover {
+    background-color: #397f39; /* Darker shade on hover */
+    box-shadow: 0 6px 0 #2d5d2d, /* Slightly darker on hover for depth */
+                0 8px 12px rgba(0, 0, 0, 0.25); /* Darker shadow on hover */
+}
+
+body.guards-list-page .styled-link:active {
+    transform: translateY(4px); /* Pressed effect */
+    box-shadow: 0 2px 0 #2d5d2d, /* Adjusted depth on press */
+                0 4px 8px rgba(0, 0, 0, 0.15); /* Reduced shadow on press */
+}
+
+/* Form styling */
+.custom-form {
+    max-width: 400px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Custom button styling */
+.custom-btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Full Schedule Page */
+body.full-schedule-page table {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #ddd; /* Light gray border for table, th, and td elements */
+
+}
+
+body.full-schedule-page th,
+body.full-schedule-page td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd; /* Light gray border for table, th, and td elements */
+
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar .button {
+    color: white;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+}
+
+.navbar .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Container styling for index page */
+.container {
+    max-width: 600px;
+    margin: 100px auto 0; /* Account for fixed navbar height */
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling for index page */
+body.index-page h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Button group styling for index page */
+body.index-page .button-group .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+body.index-page .button-group .button:hover {
+    background-color: #0056b3;
+}
+
+body.index-page .button-group .button i {
+    margin-right: 8px;
+}
+
+/* Schedule Page Styles */
+body.schedule-page {
+    text-align: center; /* Center align all text */
+}
+
+/* Main schedule title styling */
+body.schedule-page h2 {
+    font-size: 1.8rem;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Guard list styling */
+body.schedule-page p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Link styling for navigation */
+body.schedule-page a {
+    margin-top: 20px;
+    display: inline-block; /* Makes the link block to accommodate padding */
+    font-size: 1.1rem; /* Slightly larger font size for better visibility */
+    padding: 10px 20px; /* Padding around the link */
+    background-color: #4CAF50; /* Same green as the buttons */
+    color: white; /* White text color */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+body.schedule-page a:hover {
+    background-color: #1f7d22; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly scale up on hover for effect */
+}
+
+/* Add a container for the schedule content */
+body.schedule-page .schedule-container {
+    max-width: 600px; /* Limit the width for better readability */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding around the container */
+    background-color: white; /* White background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* General styling for all form fields */
+.form-field {
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover and focus styling */
+.form-field:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+    outline: none;
+}
+
+/* Styling for specific fields */
+.date-field {
+    background-color: #e9f5fc;
+}
+
+.hour-field, .minute-field {
+    width: 48%;
+    display: inline-block;
+    margin-right: 4%;
+}
+
+.hour-field:last-of-type, .minute-field:last-of-type {
+    margin-right: 0;
+}
+
+.hours-field {
+    background-color: #fef9e7;
+}
+
+/* Styling for radio select field */
+.shift-field {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.shift-field label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
+}
+
+.shift-field input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Additional form container styling */
+form {
+    margin: 0 auto; /* Centering all forms */
+}
+
+/* Specific styles for the custom form */
+.custom-form {
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"] {
+    padding: 8px 16px; /* Reduce padding to make button smaller */
+}
+
+/* Submit button enhancements */
+button[type="submit"]:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}

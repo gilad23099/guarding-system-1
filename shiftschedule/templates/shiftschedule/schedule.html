@@ -1,0 +1,21 @@
+<!-- schedule.html -->
+{% load static %} <!-- Load static files -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Created</title>
+    <link rel="stylesheet" href="{% static 'shiftschedule/styles.css' %}"> <!-- Update the path to your CSS file -->
+</head>
+<body class="schedule-page"> <!-- Add the new class here -->
+    <div class="schedule-container"> <!-- New container for schedule -->
+        <h1>Schedule has been successfully created!</h1>
+        <h2>Schedule for the day:</h2>
+        {% for guard in solution1 %}
+            <p>{{guard}}</p>    
+        {% endfor %}
+        <a href="{% url 'full_schedule' %}">Full Schedule</a>
+    </div>
+</body>
+</html>

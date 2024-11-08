@@ -1,0 +1,33 @@
+<!-- form_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submitted</title>
+</head>
+<body>
+    <h1>the time details:</h1>
+    <p>start time hour: {{ start_hour }} </p>
+    <p>start time minute: {{ start_minute }} </p>
+    <p>total hours to guard: {{ num_hours }} </p>
+    <p>day or night: {{ shift }} </p>
+    <p>Date: {{ date|date:"Y-m-d" }} </p>
+
+
+    <!-- Add a form that makes a POST request to /make_schedule/ -->
+    <form method="post" action="{% url 'make_schedule' %}">
+        {% csrf_token %}
+
+        <!-- Hidden fields to pass data -->
+        <input type="hidden" name="start_hour" value="{{ start_hour }}">
+        <input type="hidden" name="start_minute" value="{{ start_minute }}">
+        <input type="hidden" name="num_hours" value="{{ num_hours }}">
+        <input type="hidden" name="shift" value="{{ shift }}">
+        <input type="hidden" name="date" value="{{ date }}">
+        <input type="hidden" name="date" value="{{ date|date:"Y-m-d" }}">
+
+        <button type="submit">Make Schedule</button>
+    </form>
+</body>
+</html>

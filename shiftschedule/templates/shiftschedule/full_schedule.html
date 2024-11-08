@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Schedule</title>
+    <link rel="stylesheet" href="{% static 'shiftschedule/styles.css' %}">
+</head>
+<body class="full-schedule-page">
+    <h1>Full Schedule</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name(s)</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Date</th>
+                <th>Total Shifts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shift in guards_shifts %}
+            <tr>
+                <td>{{ shift.names }}</td>
+                <td>{{ shift.start_time }}</td>
+                <td>{{ shift.end_time }}</td>
+                <td>{{ shift.date }}</td>
+                <td>{{ shift.total_shifts }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

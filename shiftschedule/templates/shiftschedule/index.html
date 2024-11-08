@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guarding System Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shiftschedule/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="index-page">
+    <!-- Navbar for navigation buttons -->
+    <div class="navbar" >
+        <a href="{% url 'add_guard' %}" class="button">
+            <i class="fas fa-user-plus"></i> Add Guard
+        </a>
+        <a href="{% url 'guards_list' %}" class="button">
+            <i class="fas fa-list"></i> See Guard List
+        </a>
+        <a href="{% url 'full_schedule' %}" class="button">
+            <i class="fas fa-calendar-alt"></i> See Full Schedule
+        </a>
+        <a href="{% url 'time_form' %}" class="button">
+            <i class="fas fa-clock"></i> Set Schedule Time
+        </a>
+        <a href="{% url 'reset_all_guard_fields' %}" class="button" onclick="return confirm('Are you sure you want to reset all guard fields?');">
+            <i class="fas fa-sync-alt"></i> Reset all Guards Availability
+        </a>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1>Welcome to the Guarding System</h1>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,26 @@
+<!-- templates/update_guard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Guard Availability</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shiftschedule/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <h2>Update Guard Availability</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="unavailable_hours_day"> Unavailable Hours (Day):</label>
+    <input type="text" id="unavailable_hours_day" name="unavailable_hours_day">
+    
+    <label for="unavailable_hours_night">Unavailable Hours (Night):</label>
+    <input type="text" id="unavailable_hours_night" name="unavailable_hours_night">
+    
+    <button type="submit">Save changes</button>
+  </form>
+</body>
+</html>
+  

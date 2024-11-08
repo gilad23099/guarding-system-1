@@ -1,0 +1,18 @@
+<!-- success_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Successful</title>
+</head>
+<body>
+    <h1>Form Submitted Successfully!</h1>
+    <p>Your submitted time ranges:</p>
+
+    <ul>
+        {% for time_range in time_ranges %}
+            <li>{{ time_range.start_time }} - {{ time_range.end_time }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

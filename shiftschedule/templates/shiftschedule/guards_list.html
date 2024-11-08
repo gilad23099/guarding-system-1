@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guard Availability</title>
+    <link rel="stylesheet" href="{% static 'shiftschedule/styles.css' %}">
+</head>
+<body class="guards-list-page">
+    <h1>Guards and their Availability</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Day Availability</th>
+                <th>Night Availability</th>
+                <th>Update Guard</th>
+                <th>Delete Guard</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for guard in guards %}
+            <tr>
+                <td>{{ guard.name }}</td>
+                <td>{{ guard.available_shifts_day }}</td> <!-- Directly display string -->
+                <td>{{ guard.available_shifts_night }}</td> <!-- Directly display string -->
+                <td>
+                    <a href="{% url 'update_guard' guard.id %}">Update Availability</a>
+                </td>
+                <td>
+                    <form action="{% url 'delete_guard' guard.id %}" method="post" class="guards-list-btn" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <div class="link-container">
+        <a href="{% url 'add_guard' %}" class="styled-link">Add a new guard</a>
+        <a href="{% url 'index' %}" class="styled-link">Home Page</a>
+    </div>
+
+</body>
+</html>
