@@ -89,15 +89,17 @@ WSGI_APPLICATION = "guardingsystem.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        'USER': 'postgres',        # The PostgreSQL user you created
-        'PASSWORD': '089704305',     # The password for your PostgreSQL user
-        'HOST': 'localhost',            # Default is localhost (127.0.0.1)
-        'PORT': '5432',                 # Default PostgreSQL port
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'JgtHBwXJsuIWghSKMlqnFesQoxGXfXNP',
+        'HOST': 'postgres.railway.internal',
+        'PORT': '5432',
     }
+
 }
 
 
@@ -138,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR,'shiftschedule', 'static'),
 ]
 
 
