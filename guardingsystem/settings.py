@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'JgtHBwXJsuIWghSKMlqnFesQoxGXfXNP',
-        'HOST': 'autorack.proxy.rlwy.net',
+        'HOST': 'postgres.railway.internal',
         'PORT': '5432',
     }
 
