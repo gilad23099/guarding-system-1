@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 
+import dj_database_url
 
 
 
@@ -26,12 +27,12 @@ TIME_FORMAT = "H:i"
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-g3g3s_zw_d16!ia10zl+ngo2wqe^28h==$sqqw6ce99yj4mo7k"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -92,15 +93,12 @@ WSGI_APPLICATION = "guardingsystem.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'JgtHBwXJsuIWghSKMlqnFesQoxGXfXNP',
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/"db.sqlite3",
     }
-
 }
+database_url=os.environ.get("DATABASE_URL")
+DATABASES["default"]=dj_database_url.parse(database_url)
 
 
 # Password validation
