@@ -52,7 +52,7 @@ def delete_guard(request, guard_id):
     deleted_sequence = guard.sequence_number
     
     # Delete the guard
-    guard.delete()
+    guard.delete() 
     
     # Recalculate sequence numbers for all guards, starting from 1
     guards = Guard.objects.order_by('sequence_number')
