@@ -124,12 +124,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'  # URL to access static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory where static files are collected (for production)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Render will look here for static files in production
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Directory where additional static files are stored
-    os.path.join(BASE_DIR, 'shiftschedule', 'static'),  # Additional static files in shiftschedule app
+    os.path.join(BASE_DIR, 'static'),  # This directory should contain static files during development
 ]
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Uses Whitenoise to serve static files with compression
 
 # Default primary key field type
