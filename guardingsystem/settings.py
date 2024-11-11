@@ -11,12 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
 import os
-
 import dj_database_url
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,99 +27,88 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-g=jzhv5zv8nxar2z0jpv#
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
 
-
 # Application definition
 
 INSTALLED_APPS = [
-"django.contrib.admin",
-"django.contrib.auth",
-"django.contrib.contenttypes",
-"django.contrib.sessions",
-"django.contrib.messages",
-"django.contrib.staticfiles",
-"shiftschedule",
-'debug_toolbar',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "shiftschedule",
+    'debug_toolbar',
 ]
 
 INTERNAL_IPS = [
-"127.0.0.1",
-# Add more IPs if needed
+    "127.0.0.1",
+    # Add more IPs if needed
 ]
-
 
 MIDDLEWARE = [
-"django.middleware.security.SecurityMiddleware",
-"whitenoise.middleware.WhiteNoiseMiddleware",
-"django.contrib.sessions.middleware.SessionMiddleware",
-"django.middleware.common.CommonMiddleware",
-"django.middleware.csrf.CsrfViewMiddleware",
-"django.contrib.auth.middleware.AuthenticationMiddleware",
-"django.contrib.messages.middleware.MessageMiddleware",
-"django.middleware.clickjacking.XFrameOptionsMiddleware",
-'debug_toolbar.middleware.DebugToolbarMiddleware',
-
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Added Whitenoise middleware to serve static files in production
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
-
 
 ROOT_URLCONF = "guardingsystem.urls"
 
 TEMPLATES = [
     {
-    "BACKEND": "django.template.backends.django.DjangoTemplates",
-    'DIRS': [BASE_DIR / 'templates'],  # Ensure the templates folder is included here
-    "APP_DIRS": True,
-    "OPTIONS": {
-        "context_processors": [
-        "django.template.context_processors.debug",
-        "django.template.context_processors.request",
-        "django.contrib.auth.context_processors.auth",
-        "django.contrib.messages.context_processors.messages",
-        ],},
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        'DIRS': [BASE_DIR / 'templates'],  # Ensure the templates folder is included here
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
     },
 ]
 
 WSGI_APPLICATION = "guardingsystem.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
 if not DEBUG:
     DATABASES = {
-	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
-    
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 else:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-   
-    
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-{
-"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-},
-{
-"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-},
-{
-"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-},
-{
-"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -136,20 +121,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+STATIC_URL = '/static/'  # URL to access static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory where static files are collected (for production)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-    os.path.join(BASE_DIR,'shiftschedule','static'),
+    os.path.join(BASE_DIR, 'static'),  # Directory where additional static files are stored
+    os.path.join(BASE_DIR, 'shiftschedule', 'static'),  # Additional static files in shiftschedule app
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Uses Whitenoise to serve static files with compression
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
