@@ -27,63 +27,58 @@ TIME_FORMAT = "H:i"
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower() == "true"
-
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-g=jzhv5zv8nxar2z0jpv#jv-$o*p(+e597*wgkau$gc&7v*m4e')
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "shiftschedule",
-    'debug_toolbar',
+"django.contrib.admin",
+"django.contrib.auth",
+"django.contrib.contenttypes",
+"django.contrib.sessions",
+"django.contrib.messages",
+"django.contrib.staticfiles",
+"shiftschedule",
+'debug_toolbar',
 ]
 
 INTERNAL_IPS = [
-    "127.0.0.1",
-    # Add more IPs if needed
+"127.0.0.1",
+# Add more IPs if needed
 ]
 
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+"django.middleware.security.SecurityMiddleware",
+"whitenoise.middleware.WhiteNoiseMiddleware",
+"django.contrib.sessions.middleware.SessionMiddleware",
+"django.middleware.common.CommonMiddleware",
+"django.middleware.csrf.CsrfViewMiddleware",
+"django.contrib.auth.middleware.AuthenticationMiddleware",
+"django.contrib.messages.middleware.MessageMiddleware",
+"django.middleware.clickjacking.XFrameOptionsMiddleware",
+'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
 
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "guardingsystem.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [BASE_DIR / 'templates'],  # Ensure the templates folder is included here
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
+    "BACKEND": "django.template.backends.django.DjangoTemplates",
+    'DIRS': [BASE_DIR / 'templates'],  # Ensure the templates folder is included here
+    "APP_DIRS": True,
+    "OPTIONS": {
+        "context_processors": [
+        "django.template.context_processors.debug",
+        "django.template.context_processors.request",
+        "django.contrib.auth.context_processors.auth",
+        "django.contrib.messages.context_processors.messages",
+        ],},
     },
 ]
 
@@ -94,32 +89,39 @@ WSGI_APPLICATION = "guardingsystem.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-DATABASES = {
+if not DEBUG:
+    DATABASES = {
+	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+    
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR/"db.sqlite3",
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-database_url=os.environ.get("DATABASE_URL")
-DATABASES["default"]=dj_database_url.parse(database_url)
+   
+    
+
 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+{
+"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+},
+{
+"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+},
+{
+"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+},
+{
+"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+},
 ]
 
 
@@ -141,8 +143,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
     os.path.join(BASE_DIR,'shiftschedule','static'),
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 
 
